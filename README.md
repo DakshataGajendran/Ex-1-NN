@@ -37,11 +37,66 @@ STEP 5:Normalizing the data<BR>
 STEP 6:Splitting the data into test and train<BR>
 
 ##  PROGRAM:
-TYPE YOUR CODE HERE
+
+# Import Libraries
+import pandas as pd
+from sklearn.preprocessing import MinMaxScaler
+from sklearn.model_selection import train_test_split
+
+# Read the dataset
+df = pd.read_csv("Churn_Modelling.csv")
+
+# Handling Missing Values
+print("Missing Values:\n", df.isnull().sum(), "\n")
+
+# Handle duplicates (if any)
+duplicates = df.duplicated().sum()
+print(f"Number of duplicate rows: {duplicates}\n")
+
+# Check for Outliers using describe()
+print("Outliers (Summary Statistics):\n", df.describe(), "\n")
+
+# Drop unnecessary columns (like 'Surname', 'Geography', and 'Gender')
+df = df.drop(['Surname', 'Geography', 'Gender'], axis=1)
+
+# Normalize the dataset using MinMaxScaler
+scaler = MinMaxScaler()
+df_normalized = pd.DataFrame(scaler.fit_transform(df.drop('Exited', axis=1)), columns=df.columns[:-1])
+
+# Normalized dataset
+print("Normalized dataset:\n", df_normalized.head(), "\n")
+
+# Define features (X) and target (y)
+X = df_normalized.values
+y = df['Exited'].values
+
+# Input & Output Values
+print("Input Values (Features):\n", X[:5])  # Show first 5 rows of features
+print("\nOutput Values (Target):\n", y[:5])  # Show first 5 values of target
+
+# Split the data into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Splitting the data for training & testing
+print(f"\nTraining data size: {len(X_train)}")
+print(f"Testing data size: {len(X_test)}")
 
 
 ## OUTPUT:
-SHOW YOUR OUTPUT HERE
+# Missing Values:
+![image](https://github.com/user-attachments/assets/75e8859a-44da-4545-88b9-e722236c1594)
+# Outliers:
+![image](https://github.com/user-attachments/assets/32d7ddf8-940e-43fd-9a36-5ccfba1617e4)
+# Normalized dataset:
+![image](https://github.com/user-attachments/assets/2f358200-7e3c-42de-a322-ebff20a438c5)
+# Input & Output Values:
+![image](https://github.com/user-attachments/assets/59465e7f-3076-4c5c-b0c2-facd95f039f2)
+# Splitting the data for training & Testing:
+![image](https://github.com/user-attachments/assets/1a757f5c-4c23-40a6-ab2d-4a7e1ba9f6a8)
+
+
+
+
 
 
 ## RESULT:
