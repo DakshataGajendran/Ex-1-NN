@@ -1,7 +1,7 @@
-<H3>ENTER YOUR NAME</H3>
-<H3>ENTER YOUR REGISTER NO.</H3>
-<H3>EX. NO.1</H3>
-<H3>DATE</H3>
+<H3>DAKSHATA G</H3>
+<H3> 212223240021</H3>
+<H3>EX. NO.1</H3> 
+<H3>07.03.2025</H3>
 <H1 ALIGN =CENTER> Introduction to Kaggle and Data preprocessing</H1>
 
 ## AIM:
@@ -37,6 +37,7 @@ STEP 5:Normalizing the data<BR>
 STEP 6:Splitting the data into test and train<BR>
 
 ##  PROGRAM:
+```
 
 # Import Libraries
 import pandas as pd
@@ -80,7 +81,7 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_
 # Splitting the data for training & testing
 print(f"\nTraining data size: {len(X_train)}")
 print(f"Testing data size: {len(X_test)}")
-
+```
 
 ## OUTPUT:
 # Missing Values:
